@@ -3,7 +3,6 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import connectionFactory from "./utils/connection.js";
 
 
 import healthCheckRouter from "./routes/healthcheck.routes.js";

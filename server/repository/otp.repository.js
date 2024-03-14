@@ -1,10 +1,8 @@
-import mongoose from "mongoose";
-import connectionFactory from "../utils/connection.js";
 import { nanoid } from "nanoid";
-
-
 import dotenv from "dotenv";
+
 import errorHandler from "../utils/error.js";
+import connectionFacade from "../utils/connection.js";
 
 dotenv.config();
 
@@ -12,7 +10,7 @@ export default class OtpLogRepository {
 
     getLog = async (otpLogId) => {
         var conn;
-        await connectionFactory()
+        await connectionFacade()
             .then(connection => conn = connection)
         if (conn == null || conn == undefined) {
             throw errorHandler(500, "Problem connecting with the Database");
@@ -24,7 +22,7 @@ export default class OtpLogRepository {
     }
     addLog = async (userPubId, otpRequestedAt, status) => {
         var conn;
-        await connectionFactory()
+        await connectionFacade()
             .then(connection => conn = connection)
         if (conn == null || conn == undefined) {
             throw errorHandler(500, "Problem connecting with the Database");
@@ -38,7 +36,7 @@ export default class OtpLogRepository {
 
     updateLog = async (otpLogId, status) => {
         var conn;
-        await connectionFactory()
+        await connectionFacade()
             .then(connection => conn = connection);
         if (conn == null || conn == undefined) {
             throw errorHandler(500, "Problem connecting with Database");

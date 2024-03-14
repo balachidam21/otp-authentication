@@ -1,16 +1,7 @@
-import Twilio from "twilio/lib/rest/Twilio.js";
-import dotenv from "dotenv";
 import UserRepository from "../repository/user.repository.js";
 import errorHandler from "../utils/error.js";
 import OTPService from "./otp.service.js";
 
-dotenv.config();
-
-const twillio_account_sid = process.env.TWILLIO_ACCOUNT_SID;
-const twillio_auth_token = process.env.TWILLIO_AUTH_TOKEN;
-const twilio_service_sid = process.env.TWILLIO_SERVICE_SID;
-
-const client = new Twilio(twillio_account_sid, twillio_auth_token);
 const userRepository = new UserRepository();
 const otpService = new OTPService();
 

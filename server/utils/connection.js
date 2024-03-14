@@ -28,7 +28,7 @@ const DB_URI = process.env.MONGO_URI;
 //     }
 // };
 
-const connectionFactory = async () => {
+const connectionFacade = async () => {
     const conn = await mongoose
         .createConnection(DB_URI).asPromise();
     conn.model('User', userSchema);
@@ -36,4 +36,4 @@ const connectionFactory = async () => {
     return conn;
 };
 
-export default connectionFactory;
+export default connectionFacade;

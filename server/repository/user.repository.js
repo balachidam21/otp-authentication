@@ -1,18 +1,13 @@
-import mongoose from "mongoose";
-import connectionFactory from "../utils/connection.js";
+import connectionFacade from "../utils/connection.js";
 import { nanoid } from "nanoid";
 
-
-import dotenv from "dotenv";
 import errorHandler from "../utils/error.js";
-
-dotenv.config();
 
 export default class UserRepository {
 
     findUser = async (username) => {
         var conn;
-        await connectionFactory()
+        await connectionFacade()
             .then(connection => conn = connection)
         if (conn == null || conn == undefined) {
             throw errorHandler(500, "Problem connecting with the Database");
@@ -29,7 +24,7 @@ export default class UserRepository {
 
     addUser = async (username, phoneNumber) => {
         var conn;
-        await connectionFactory()
+        await connectionFacade()
             .then(connection => conn = connection)
         if (conn == null || conn == undefined) {
             throw errorHandler(500, "Problem connecting with the Database");
